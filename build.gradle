@@ -8,6 +8,7 @@
 
 // Apply the java-library plugin to add support for Java Library
 apply plugin: 'java-library'
+apply plugin: 'java'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -18,15 +19,28 @@ repositories {
 
 test {
     useJUnit {
-        includeCategories 'pt.fizzbuzz.category.UnitTest'
-        excludeCategories 'pt.fizzbuzz.category.IntegrationTest'
+        includeCategories 'pt.fizzbuzz.category.IntegrationTest'
+        excludeCategories 'pt.fizzbuzz.category.UnitTest'
+    }
+}
+
+task run(type: JavaExec) {
+    main = "pt.fizzbuzz.App"
+    classpath = sourceSets.main.runtimeClasspath
+    
+    if(project.hasProperty('args'))
+    {
+        args project.args.split('\\s')    
     }
 }
 
 dependencies {
-    // Use JUnit test framework
+    // JUnit test framework
     testImplementation 'junit:junit:4.12'
-    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest-library
-	testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: '1.3'
     
+    // JUnit System Rules
+	testCompile group: 'com.github.stefanbirkner', name: 'system-rules', version: '1.16.1'
+    
+    // Apache commons lang
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
 }

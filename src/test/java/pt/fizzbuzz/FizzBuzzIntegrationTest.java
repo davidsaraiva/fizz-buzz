@@ -1,51 +1,58 @@
 package pt.fizzbuzz;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemErrRule;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.experimental.categories.Category;
 
 import pt.fizzbuzz.category.IntegrationTest;
+import pt.fizzbuzz.utils.SystemUtil;
 
 @Category(IntegrationTest.class)
 public class FizzBuzzIntegrationTest {
     
-    private FizzBuzz fizzBuzz;
-    private static final String SPACE = " ";
+    @Rule
+    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
     
-    @Before
-    public void initializeTestVars() {
-        setFizzBuzz(new FizzBuzz());
+    @Rule
+    public final SystemErrRule systemErrRule = new SystemErrRule().enableLog();
+    
+    @Test
+    public void whenScriptRunsWithCorrectParamsTest() 
+    {
+    	final String EXPECTED_RESULT = "1 2 lucky 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz lucky 14 FizzBuzz 16 17 Fizz 19 Buzz";
+    	
+    	executeAppMain( new String[] {"1","20"} );
+        
+        assertEquals(EXPECTED_RESULT, SystemUtil.getValue(systemOutRule));
     }
     
     @Test
-    public void integrationTest() {
-    	final String FULL_TEST_EXPECTED_RESULT = "asd 2 lucky 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz lucky 14 FizzBuzz 16 17 Fizz 19 Buzz";
+    public void whenScriptRunsWithInsuficientParamsTest() 
+    {
+        final String EXPECTED_RESULT = "ERROR: Invalid number of params, was expecting minimum range and maximum range";
         
-        String resultStr = executeFizzBuzz(IntStream.rangeClosed(1, 20).boxed());
+        executeAppMain( new String[] {"1"} );
         
-        assertThat(FULL_TEST_EXPECTED_RESULT, equalTo(resultStr));
-        
+        assertEquals(EXPECTED_RESULT, SystemUtil.getValue(systemErrRule));
     }
     
-    private String executeFizzBuzz(Stream<Integer> stream) {
-        List<String> resultList = new ArrayList<String>();
-        stream.forEach(number -> resultList.add(getFizzBuzz().encodeFizzBuzz(number)));
-        return String.join(SPACE, resultList);
+    @Test
+    public void whenScriptRunsWithSwitchedRangesTest() 
+    {
+        final String EXPECTED_RESULT = "ERROR: minimum range should be lower than maximum range";
+        
+        executeAppMain( new String[] {"20","1"} );
+        
+        assertEquals(EXPECTED_RESULT, SystemUtil.getValue(systemErrRule));
     }
     
-    public FizzBuzz getFizzBuzz() {
-        return fizzBuzz;
+    private void executeAppMain(String[] args)
+    {
+    	App.main(args);
     }
-
-    public void setFizzBuzz(FizzBuzz fizzBuzz) {
-        this.fizzBuzz = fizzBuzz;
-    }
+    
 }
