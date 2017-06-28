@@ -43,7 +43,7 @@ If I run the program over a range from 1-20 I should get the following output:
 (Integer is 10 because there were 10 numbers that were not altered in any way).
 
 
-### Prerequisites
+## Prerequisites
 
 For executing this scripting you should have configured in your environment.
 
