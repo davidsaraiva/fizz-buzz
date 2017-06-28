@@ -65,13 +65,13 @@ public class FizzBuzzUnitTest {
     {
         List<String> resultList = new ArrayList<String>();
         stream.forEach(number -> resultList.add(fizzBuzz.encodeFizzBuzz(number)));
-        return String.join(StringUtils.SPACE, resultList);
+        return String.join(SPACE, resultList);
     }
     
     private String buildExpectedResults(int resultElementsSize, String resultText) 
     {
         return String.join(
-                 StringUtils.SPACE
+                 SPACE
                 ,Collections.nCopies(resultElementsSize, resultText));
     }
     
