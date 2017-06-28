@@ -13,7 +13,7 @@ public class App {
      * The program will at first hand validate the input parameters
      * and then each element in the range will be encoded with fizz buzz rules 
      * 
-     * !Important This method expects to receive two parameters parameter.
+     * !Important This method expects to receive two parameters.
      *       
      * @param args
      */
