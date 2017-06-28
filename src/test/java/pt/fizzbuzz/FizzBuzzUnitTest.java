@@ -58,7 +58,7 @@ public class FizzBuzzUnitTest {
     private void executeTestForNElements(List<Integer> numbers, String expectedResultForEachPosition) 
     {
         final String EXPECTED_RESULT = buildExpectedResults(numbers.size(), expectedResultForEachPosition);
-        assertEquals(1, executeFizzBuzzEncoding(numbers.stream()));
+        assertEquals(EXPECTED_RESULT, executeFizzBuzzEncoding(numbers.stream()));
     }
     
     private String executeFizzBuzzEncoding(Stream<Integer> stream) 
