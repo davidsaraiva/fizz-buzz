@@ -1,6 +1,6 @@
 # Fizz Buzz
 
-Fizz buzz is a group word game for children to teach them about division.[1] Players take turns to count incrementally, replacing any number divisible by three with the word "fizz", and any number divisible by five with the word "buzz".
+Fizz buzz is a group word game for children to teach them about division. Players take turns to count incrementally, replacing any number divisible by three with the word "fizz", and any number divisible by five with the word "buzz".
 
 ([see Wikipedia](https://en.wikipedia.org/wiki/Fizz_buzz))
 
@@ -43,7 +43,7 @@ If I run the program over a range from 1-20 I should get the following output:
 (Integer is 10 because there were 10 numbers that were not altered in any way).
 
 
-### Prerequisites
+## Prerequisites
 
 For executing this scripting you should have configured in your environment.
 
