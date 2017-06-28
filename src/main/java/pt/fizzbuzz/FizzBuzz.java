@@ -2,20 +2,27 @@ package pt.fizzbuzz;
 
 import static pt.fizzbuzz.utils.AppConstants.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+
+import pt.fizzbuzz.utils.FizzBuzzElementsCounter;
+
 public class FizzBuzz {
     
-	/**
-	 * Encodes a numeric value according to FizzBuzz rules:
-	 * 
-	 * encodeFizzBuzz(333) 	=> lucky
-	 * encodeFizzBuzz(15) 	=> FizzBuzz
-	 * encodeFizzBuzz(3) 	=> Fizz
-	 * encodeFizzBuzz(5) 	=> Buzz
-	 * encodeFizzBuzz(7) 	=> 7
-	 * 
-	 * @param number
-	 * @return String with encoded result
-	 */
+    /**
+     * Encodes a numeric value according to FizzBuzz rules:
+     * 
+     * encodeFizzBuzz(333) 	=> lucky
+     * encodeFizzBuzz(15) 	=> FizzBuzz
+     * encodeFizzBuzz(3) 	=> Fizz
+     * encodeFizzBuzz(5) 	=> Buzz
+     * encodeFizzBuzz(7) 	=> 7
+     * 
+     * @param number
+     * @return String with encoded result
+     */
     public String encodeFizzBuzz(int number) {
         if (containsLuckyNumber(number)) 
         {
@@ -34,6 +41,34 @@ public class FizzBuzz {
         }
         
         return result.length() == 0 ? String.valueOf(number) : result.toString();
+    }
+    
+    /**
+     * Encodes a range of numeric values according to FizzBuzz rules
+     * 
+     * @param minRange
+     * @param maxRange
+     * @return String containing all numbers in range converted
+     */
+    public String encodeFizzBuzzForRange(int minRange, int maxRange)
+    {
+        FizzBuzzElementsCounter fizzBuzzElementsCounter = new FizzBuzzElementsCounter();
+        List<String> resultList = new ArrayList<>();
+        
+        for (int index = minRange; index <= maxRange; ++index)
+        {
+            String fizzBuzzResult = encodeFizzBuzz(index);
+            resultList.add(fizzBuzzResult);
+            fizzBuzzElementsCounter.incrementCounter(fizzBuzzResult);
+        }
+        
+        StringBuilder result = new StringBuilder();
+        result
+            .append(String.join(StringUtils.SPACE, resultList))
+            .append(SPACE)
+            .append(fizzBuzzElementsCounter.generateCounterString());
+        
+        return result.toString();
     }
     
     /**
@@ -92,4 +127,5 @@ public class FizzBuzz {
     {
         return numberToTest % multipleFactor == IS_MULTIPLE_RESULT;
     }
+    
 }

@@ -1,12 +1,8 @@
 package pt.fizzbuzz;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.IntStream;
+import static pt.fizzbuzz.utils.AppConstants.*;
 
 import org.apache.commons.lang3.StringUtils;
-
-import static pt.fizzbuzz.utils.AppConstants.*;
 
 public class App {
 
@@ -32,13 +28,7 @@ public class App {
         int minRange = Integer.parseInt(args[0]);
         int maxRange = Integer.parseInt(args[1]);
         
-        List<String> resultList = new ArrayList<>();
-        
-        IntStream
-            .rangeClosed(minRange, maxRange)
-            .forEach(number -> resultList.add(fizzBuzz.encodeFizzBuzz(number)));
-        
-        System.out.println(String.join(StringUtils.SPACE, resultList));
+        System.out.println(fizzBuzz.encodeFizzBuzzForRange(minRange, maxRange));
     }
     
     /**
@@ -83,5 +73,4 @@ public class App {
         
         return false;
     }
-    
 }

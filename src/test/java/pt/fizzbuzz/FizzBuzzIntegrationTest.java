@@ -11,6 +11,8 @@ import org.junit.experimental.categories.Category;
 import pt.fizzbuzz.category.IntegrationTest;
 import pt.fizzbuzz.utils.SystemUtil;
 
+import static pt.fizzbuzz.utils.AppConstants.*;
+
 @Category(IntegrationTest.class)
 public class FizzBuzzIntegrationTest {
     
@@ -23,7 +25,7 @@ public class FizzBuzzIntegrationTest {
     @Test
     public void whenScriptRunsWithCorrectParamsTest() 
     {
-    	final String EXPECTED_RESULT = "1 2 lucky 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz lucky 14 FizzBuzz 16 17 Fizz 19 Buzz";
+    	final String EXPECTED_RESULT = "1 2 lucky 4 buzz fizz 7 8 fizz buzz 11 fizz lucky 14 fizzbuzz 16 17 fizz 19 buzz fizz: 4 buzz: 3 fizzbuzz: 1 lucky: 2 integer: 10";
     	
     	executeAppMain( new String[] {"1","20"} );
         
@@ -33,21 +35,17 @@ public class FizzBuzzIntegrationTest {
     @Test
     public void whenScriptRunsWithInsuficientParamsTest() 
     {
-        final String EXPECTED_RESULT = "ERROR: Invalid number of params, was expecting minimum range and maximum range";
-        
         executeAppMain( new String[] {"1"} );
         
-        assertEquals(EXPECTED_RESULT, SystemUtil.getValue(systemErrRule));
+        assertEquals(ERROR_MSG_INVALID_NUMBER_OF_PARAMS, SystemUtil.getValue(systemErrRule));
     }
     
     @Test
     public void whenScriptRunsWithSwitchedRangesTest() 
     {
-        final String EXPECTED_RESULT = "ERROR: minimum range should be lower than maximum range";
-        
         executeAppMain( new String[] {"20","1"} );
         
-        assertEquals(EXPECTED_RESULT, SystemUtil.getValue(systemErrRule));
+        assertEquals(ERROR_MSG_MAXIMUM_RANGE_GREATER_THAN_MINIMUM, SystemUtil.getValue(systemErrRule));
     }
     
     private void executeAppMain(String[] args)

@@ -49,7 +49,7 @@ public class FizzBuzzUnitTest {
     }
     
     @Test
-    public void testLucky() 
+    public void luckySequenceTest() 
     {
         final List<Integer> LUCKY_TEST_PARAMS = Arrays.asList(3,13,23,33,43);
         executeTestForNElements(LUCKY_TEST_PARAMS, LUCKY_RESULT);
@@ -71,8 +71,8 @@ public class FizzBuzzUnitTest {
     private String buildExpectedResults(int resultElementsSize, String resultText) 
     {
         return String.join(
-                  StringUtils.SPACE
-                , Collections.nCopies(resultElementsSize, resultText));
+                 StringUtils.SPACE
+                ,Collections.nCopies(resultElementsSize, resultText));
     }
     
 }
