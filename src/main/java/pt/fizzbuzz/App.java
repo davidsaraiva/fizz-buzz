@@ -43,21 +43,24 @@ public class App {
      */
     private static boolean invalidParams(String[] args) 
     {
-        if( args == null || args.length < 2){
+        if( args == null || args.length < 2)
+        {
             System.err.println(ERROR_MSG_INVALID_NUMBER_OF_PARAMS);
             return true;
         }
         
         String minRangeStr = args[0];
         
-        if(!StringUtils.isNumeric(minRangeStr)){
+        if(!StringUtils.isNumeric(minRangeStr))
+        {
             System.err.println(ERROR_MSG_INVALID_MINIMUM_RANGE);
             return true;
         }
         
         String maxRangeStr = args[1];
         
-        if(!StringUtils.isNumeric(maxRangeStr)){
+        if(!StringUtils.isNumeric(maxRangeStr))
+        {
             System.err.println(ERROR_MSG_INVALID_MAXIMUM_RANGE);
             return true;
         }
@@ -66,7 +69,8 @@ public class App {
         int minRange = Integer.parseInt(minRangeStr);
         int maxRange = Integer.parseInt(maxRangeStr);
         
-        if (minRange > maxRange) {
+        if (minRange > maxRange) 
+        {
             System.err.println(ERROR_MSG_MAXIMUM_RANGE_GREATER_THAN_MINIMUM);
             return true;
         }
