@@ -59,7 +59,8 @@ run.bat 1 20
 ./run.sh 1 20
 ```
 
-The arguments represent minimum and maximum range of values for output.
+The arguments represent minimum and maximum range of values for output ([minRange , maxRange]).
+<b>Note:</b> In order to mantain the exercise simplicity only positive values are considered valids.
 
 ## Tests
 
