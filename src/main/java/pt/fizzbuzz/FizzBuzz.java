@@ -5,8 +5,6 @@ import static pt.fizzbuzz.utils.AppConstants.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import pt.fizzbuzz.utils.FizzBuzzElementsCounter;
 
 public class FizzBuzz {
@@ -64,7 +62,7 @@ public class FizzBuzz {
         
         StringBuilder result = new StringBuilder();
         result
-            .append(String.join(StringUtils.SPACE, resultList))
+            .append(String.join(SPACE, resultList))
             .append(SPACE)
             .append(fizzBuzzElementsCounter.generateCounterString());
         
