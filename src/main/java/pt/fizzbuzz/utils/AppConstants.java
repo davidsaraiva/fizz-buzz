@@ -4,8 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public final class AppConstants {
     
-    private AppConstants(){}
-    
     // Fizz Buzz Rules
     public static final String  FIZZ_RESULT             = "fizz";
     public static final int     FIZZ_MODULUS_FACTOR     = 3;
