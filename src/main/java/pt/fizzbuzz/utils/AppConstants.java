@@ -2,7 +2,7 @@ package pt.fizzbuzz.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
-public final class AppConstants {
+public class AppConstants {
     
     // Fizz Buzz Rules
     public static final String  FIZZ_RESULT             = "fizz";
