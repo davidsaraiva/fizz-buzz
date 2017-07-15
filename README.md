@@ -1,5 +1,5 @@
 # Fizz Buzz
-https://travis-ci.org/davidsaraiva/fizz-buzz.svg?branch=master
+[![Build Status](https://travis-ci.org/davidsaraiva/fizz-buzz.svg?branch=master)](https://travis-ci.org/davidsaraiva/fizz-buzz) [![Coverage Status](https://coveralls.io/repos/github/davidsaraiva/fizz-buzz/badge.svg?branch=master)](https://coveralls.io/github/davidsaraiva/fizz-buzz?branch=master)
 
 Fizz buzz is a group word game for children to teach them about division. Players take turns to count incrementally, replacing any number divisible by three with the word "fizz", and any number divisible by five with the word "buzz".
 
