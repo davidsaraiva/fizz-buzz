@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import pt.fizzbuzz.category.UnitTest;
+import pt.fizzbuzz.utils.AppConstants;
 
 @Category(UnitTest.class)
 public class FizzBuzzUnitTest {
@@ -52,6 +53,12 @@ public class FizzBuzzUnitTest {
     {
         final List<Integer> LUCKY_TEST_PARAMS = Arrays.asList(3,13,23,33,43);
         executeTestForNElements(LUCKY_TEST_PARAMS, LUCKY_RESULT);
+    }
+    
+    @Test
+    public void constantBuzzTest() 
+    {
+        assertEquals("buzz", AppConstants.BUZZ_RESULT);
     }
     
     private void executeTestForNElements(List<Integer> numbers, String expectedResultForEachPosition) 
